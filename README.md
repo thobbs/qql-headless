@@ -40,6 +40,35 @@ of operating system, processor architecture, and Node version.
 [Volta]: https://volta.sh/
 [canvas-deps]: https://github.com/Automattic/node-canvas#compiling
 
+## Generating Multiple Images with the Same Traits
+
+The `src/multi.js` offers a way to easily generate multiple images with a fixed
+address and fixed set of traits. Only the nonce will be randomized for each
+image.
+
+Usage:
+
+```
+$ node src/multi.js <outdir> <address> <traitEncoding> <count>
+```
+
+The `address` should be your Eth address, starting with 0x.
+
+The `traitEncoding` should be seven hex characters. To produce a trait encoding,
+use qql.art and generate an image with the exact traits that you'd like. Then,
+view the token page for that particular output. The last seven characters of the URL
+will be the trait encoding. Note that none of the traits will be randomized with this
+approach. (Any that were left randomized on qql.art were assigned a value and are
+now fixed.)
+
+The `count` should be the number of images you want.
+
+Example usage:
+
+```
+$ node src/multi.js /tmp/myqqls 0x33c9371d25ce44a408f8a6473fbad86bf81e1a17 4c54b46 5
+```
+
 ## Licensing
 
 Only some of this code is permissively licensed. Please see `LICENSE` for
